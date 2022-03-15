@@ -1,0 +1,27 @@
+{
+  "name": "tomorrow-catcher-awesome",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "preinstall": "esno scripts/disallow-pnpm.ts",
+    "verify:commit": "esno scripts/verify-commit.ts",
+    "prepare": "husky install"
+  },
+  "author": "ChuHingYee",
+  "license": "MIT",
+  "engines": {
+    "pnpm": ">=6"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.21",
+    "chalk": "^5.0.1",
+    "esno": "^0.14.1",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.5"
+  },
+  "lint-staged": {
+    "packages/**/*.{js,ts,tsx,vue}": [
+      "eslint --fix"
+    ]
+  }
+}

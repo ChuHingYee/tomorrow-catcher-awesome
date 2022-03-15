@@ -1,0 +1,76 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "react-ts",
+      "version": "0.1.0",
+      "private": true,
+      "dependencies": {
+        "@testing-library/jest-dom": "^5.16.2",
+        "@testing-library/react": "^12.1.4",
+        "@testing-library/user-event": "^13.5.0",
+        "@tomorrow-catcher/react": "^1.0.3",
+        "@types/jest": "^27.4.1",
+        "@types/node": "^16.11.26",
+        "@types/react": "^17.0.40",
+        "@types/react-dom": "^17.0.13",
+        "express": "^4.17.3",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-scripts": "5.0.0",
+        "typescript": "^4.6.2",
+        "web-vitals": "^2.1.4",
+        "start": "pm2 start express.js",
+        "stop": "pm2 stop express.js"
+      },
+      "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "startPm2": "pm2 start express.js",
+        "stopPm2": "pm2 stop express.js"
+      },
+      "eslintConfig": {
+        "extends": [
+          "react-app",
+          "react-app/jest"
+        ]
+      },
+      "browserslist": {
+        "production": [
+          ">0.2%",
+          "not dead",
+          "not op_mini all"
+        ],
+        "development": [
+          "last 1 chrome version",
+          "last 1 firefox version",
+          "last 1 safari version"
+        ]
+      }
+    },
+    "prefix": "/Users/chuhingyee/Documents/workplace/tomorrow/apps/react-ts"
+  },
+  "2 debug pnpm:context": {
+    "currentLockfileExists": false,
+    "storeDir": "/Users/chuhingyee/.pnpm-store/v3",
+    "virtualStoreDir": "/Users/chuhingyee/Documents/workplace/tomorrow/apps/react-ts/node_modules/.pnpm"
+  },
+  "3 debug pnpm:stage": {
+    "prefix": "/Users/chuhingyee/Documents/workplace/tomorrow/apps/react-ts",
+    "stage": "resolution_started"
+  },
+  "4 error pnpm": {
+    "code": "ERR_PNPM_SPEC_NOT_SUPPORTED_BY_ANY_RESOLVER",
+    "pkgsStack": [],
+    "err": {
+      "name": "pnpm",
+      "message": "start@pm2 start express.js isn't supported by any available resolver.",
+      "code": "ERR_PNPM_SPEC_NOT_SUPPORTED_BY_ANY_RESOLVER",
+      "stack": "pnpm: start@pm2 start express.js isn't supported by any available resolver.\n    at Object.resolve (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:85877:17)\n    at async run (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:71522:23)"
+    }
+  }
+}
