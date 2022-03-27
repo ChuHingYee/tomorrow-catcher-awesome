@@ -62,8 +62,6 @@
 <script lang="ts" setup>
 import { ref, watch } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
-import 'element-plus/es/components/message/style/css'
-import 'element-plus/es/components/message-box/style/css'
 import { useRoute, useRouter } from 'vue-router'
 import UpdatePasswordDialog from './components/updatePasswordDialog.vue'
 import { useHandleUser } from './hook/userHandle'

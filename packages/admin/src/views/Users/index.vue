@@ -70,14 +70,6 @@ import AddUserDialog from './components/addUserDialog.vue'
 import { useHandleUser } from './hook/userHandle'
 import Container from '@/components/Container/index.vue'
 import { GetUsersList } from '@/apis/users'
-import 'element-plus/es/components/icon/style/css'
-import 'element-plus/es/components/button/style/css'
-import 'element-plus/es/components/popover/style/css'
-import 'element-plus/es/components/checkbox/style/css'
-import 'element-plus/es/components/tooltip/style/css'
-import 'element-plus/es/components/table/style/css'
-import 'element-plus/es/components/pagination/style/css'
-import 'element-plus/es/components/loading/style/css'
 const { formatStatus, formatTime, formatLastLoginTime, changeStatus } =
   useHandleUser()
 const table = ref<any>(null)

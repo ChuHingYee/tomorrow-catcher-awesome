@@ -38,8 +38,6 @@ import { nextTick, ref, watch } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { useVModel } from '@vueuse/core'
 import { AddUser } from '@/apis/users'
-import 'element-plus/es/components/message-box/style/css'
-import 'element-plus/es/components/message/style/css'
 
 const props = defineProps({
   visible: {

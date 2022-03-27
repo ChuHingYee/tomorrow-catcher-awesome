@@ -70,16 +70,6 @@ import UpdateTypeDialog from './components/updateTypeDialog.vue'
 import Container from '@/components/Container/index.vue'
 import { GetTypesList, UpdateType } from '@/apis/types'
 import { formatDateClock } from '@/utils/index'
-import 'element-plus/es/components/icon/style/css'
-import 'element-plus/es/components/button/style/css'
-import 'element-plus/es/components/popover/style/css'
-import 'element-plus/es/components/checkbox/style/css'
-import 'element-plus/es/components/tooltip/style/css'
-import 'element-plus/es/components/table/style/css'
-import 'element-plus/es/components/pagination/style/css'
-import 'element-plus/es/components/loading/style/css'
-import 'element-plus/es/components/message/style/css'
-import 'element-plus/es/components/message-box/style/css'
 
 interface TableQuery {
   page: number

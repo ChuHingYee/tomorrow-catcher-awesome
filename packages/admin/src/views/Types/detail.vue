@@ -63,16 +63,6 @@ import Container from '@/components/Container/index.vue'
 import { DelFile, GetTypeDetail } from '@/apis/types'
 import { formatTimeClock } from '@/utils/index'
 import { useUserStore } from '@/store/user'
-import 'element-plus/es/components/icon/style/css'
-import 'element-plus/es/components/button/style/css'
-import 'element-plus/es/components/popover/style/css'
-import 'element-plus/es/components/checkbox/style/css'
-import 'element-plus/es/components/tooltip/style/css'
-import 'element-plus/es/components/table/style/css'
-import 'element-plus/es/components/pagination/style/css'
-import 'element-plus/es/components/loading/style/css'
-import 'element-plus/es/components/message/style/css'
-import 'element-plus/es/components/message-box/style/css'
 
 type CustomStatus = -1 | API.TypeDetailResponse['status']
 const route = useRoute()

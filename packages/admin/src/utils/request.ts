@@ -1,8 +1,6 @@
 import type { AxiosRequestConfig } from 'axios'
 import axios from 'axios'
 import { ElLoading, ElMessage } from 'element-plus'
-import 'element-plus/es/components/message/style/css'
-import 'element-plus/es/components/loading/style/css'
 import type { LoadingInstance } from 'element-plus/lib/components/loading/src/loading'
 import type { MessageHandle } from 'element-plus/lib/components/message'
 import { useUserStore } from '@/store/user'
