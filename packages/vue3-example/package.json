@@ -10,7 +10,7 @@
     "stop": "pm2 stop express.js"
   },
   "dependencies": {
-    "@tomorrow-catcher/vue": "^1.0.4",
+    "@tomorrow-catcher/vue": "^1.0.9",
     "core-js": "^3.8.3",
     "express": "^4.17.3",
     "vue": "^3.2.13"

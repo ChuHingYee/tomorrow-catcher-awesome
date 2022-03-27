@@ -10,7 +10,7 @@ app.config.errorHandler = (err, vm, info) => {
 }
 
 init({
-  key: '6230a0810a7301158ec52574',
+  key: '624021e9a47d22513c1dc75f',
   expireDate: 0,
   reportUrl: 'http://127.0.0.1:7001/api/logs',
   vue: app,
@@ -21,7 +21,8 @@ init({
       customForm: `i am from ${from}`
     }
   },
-  trackDepth: 1
+  trackDepth: 1,
+  handlersList: ['sourceLoad', 'unhandledrejection', 'lag']
 })
 
 app.mount('#app')
