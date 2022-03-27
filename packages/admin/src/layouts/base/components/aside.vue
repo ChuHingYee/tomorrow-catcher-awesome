@@ -7,7 +7,7 @@
       <div v-if="!isCollapsed" :class="$style.asideLogoDesc">
         <h3 :class="$style.descTitle">Tomorrow</h3>
       </div>
-      <h3 v-else :class="$style.asideLogoDesc">T</h3>
+      <h3 v-else :class="[$style.asideLogoDesc, $style.asideLogoDesc1]">T</h3>
     </div>
     <el-scrollbar :class="$style.asideWrap">
       <el-menu
@@ -23,9 +23,11 @@
           <template v-if="!route.meta?.isHiddenChild">
             <el-sub-menu :key="route.uid" :index="route.uid">
               <template #title>
-                <svg :class="[$style.menuIcon, 'icon']" aria-hidden="true">
-                  <use :xlink:href="route.meta?.icon" />
-                </svg>
+                <el-icon>
+                  <svg :class="[$style.menuIcon, 'icon']" aria-hidden="true">
+                    <use :xlink:href="route.meta?.icon" />
+                  </svg>
+                </el-icon>
                 <span>{{ route.meta?.label }}</span>
               </template>
               <template v-for="croute in route.children">
@@ -60,9 +62,11 @@
             :index="route.uid"
             :route="{ name: route.name }"
           >
-            <svg :class="[$style.menuIcon, 'icon']" aria-hidden="true">
-              <use :xlink:href="route.meta?.icon" />
-            </svg>
+            <el-icon>
+              <svg :class="[$style.menuIcon, 'icon']" aria-hidden="true">
+                <use :xlink:href="route.meta?.icon" />
+              </svg>
+            </el-icon>
             <span>{{ route.meta?.label }}</span>
           </el-menu-item>
         </template>
@@ -132,6 +136,9 @@ const roleRoutes = computed<CustomRouter[]>(() => {
         }
       }
     }
+    &Desc1 {
+      margin-left: 0;
+    }
   }
   &Wrap {
     max-height: calc(100vh - 62px);
@@ -142,7 +149,6 @@ const roleRoutes = computed<CustomRouter[]>(() => {
       border-right: 0;
       .menu {
         &Icon {
-          margin-right: 8px;
           color: #fff;
         }
       }
