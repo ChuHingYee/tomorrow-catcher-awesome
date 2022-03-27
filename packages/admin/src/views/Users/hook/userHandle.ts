@@ -18,7 +18,7 @@ export function useHandleUser() {
     return formatDateClock(time)
   }
   function formatLastLoginTime(time: number): string {
-    if (time === 0) {
+    if (time === -1) {
       return '-'
     }
     return formatDateClock(time)
