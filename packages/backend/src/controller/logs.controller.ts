@@ -64,9 +64,8 @@ export class LogsController {
     });
     let errorDetail;
     if (logDetail) {
-      console.log(logDetail);
-      const { trace, createdAt, time, systemInfo, appInfo } = logDetail;
-      if (trace.stack && trace.stack.length > 0) {
+      const { trace, ...rest } = logDetail;
+      if (trace && trace.stack && trace.stack.length > 0) {
         const stack = trace.stack[0];
         const filename = basename(stack.url) + '.map';
         const sourceMap = await this.fileService.getFile({ filename });
@@ -81,12 +80,7 @@ export class LogsController {
         success: true,
         message: 'OK',
         data: {
-          appInfo,
-          name: trace.name,
-          message: trace.message,
-          createdAt,
-          time,
-          systemInfo,
+          ...rest,
           ...errorDetail,
         },
       };

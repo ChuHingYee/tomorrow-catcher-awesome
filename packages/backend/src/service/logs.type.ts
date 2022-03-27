@@ -36,14 +36,19 @@ export interface LogItem {
     platform: string;
     userAgent: string;
     language: string;
+    connection: {
+      effectiveType: string;
+      type: string;
+    };
+    baseVersion: string;
+    sdkVersion: string;
   };
-  sdkInfo: {
-    version: string;
-    type: string;
-    [key: string]: any;
-  };
-  key: string;
+  appKey: string;
+  href: string;
   trace?: StackTrace;
+  type?: 'network' | 'lag' | 'sourceLoad' | 'unhandledrejection' | 'unknow';
+  message?: string;
+  stack?: string;
 }
 
 export interface SaveParams {

@@ -2,6 +2,14 @@ import { prop, modelOptions, Ref } from '@typegoose/typegoose';
 import { EntityModel } from '@midwayjs/typegoose';
 import { LogType } from './logType';
 
+class SystemInfoConnection {
+  @prop({ required: true })
+  public effectiveType!: string;
+
+  @prop({ required: true })
+  public type!: string;
+}
+
 class SystemInfo {
   @prop({ required: true })
   public platform!: string;
@@ -17,6 +25,9 @@ class SystemInfo {
 
   @prop({ required: true })
   public sdkVersion!: string;
+
+  @prop({ required: true })
+  public connection!: SystemInfoConnection;
 }
 
 export class StackFrame {
@@ -73,8 +84,25 @@ export class Log {
   @prop({ required: true, ref: () => LogType })
   public appKey!: Ref<LogType>;
 
+  @prop()
+  public customInfo?: string;
+
+  @prop()
+  public type?:
+    | 'network'
+    | 'lag'
+    | 'sourceLoad'
+    | 'unhandledrejection'
+    | 'unknow';
+
   @prop({ required: true })
-  public customInfo!: string;
+  public href!: string;
+
+  @prop()
+  public message?: string;
+
+  @prop()
+  public stack?: string;
 
   @prop({ required: true })
   public systemInfo?: SystemInfo;

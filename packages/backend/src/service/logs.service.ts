@@ -49,9 +49,12 @@ export class LogsService {
         customInfo: JSON.stringify(item.customInfo),
         time: item.time,
         createdAt: Date.now(),
+        type: item.type || '',
+        href: item.href || '',
+        message: item.message || '',
+        stack: item.stack || '',
       });
     });
-    console.log(formatList, 'formatList');
     await this.logModel.insertMany(formatList);
     return true;
   }
@@ -118,17 +121,32 @@ export class LogsService {
   }
   async getLog(params: GetLogParams): Promise<any> {
     const logDetail = await this.logModel.findOne({ _id: params.id }).exec();
-    const { appKey, systemInfo, _id, trace, customInfo, time, createdAt } =
-      logDetail;
-    const appInfo = await this.logTypeModel.findOne({ _id: appKey }).exec();
-    console.log(appInfo);
-    return {
-      systemInfo,
+    const {
+      appKey,
       _id,
+      systemInfo,
+      type,
+      href,
+      message,
+      stack,
       trace,
       customInfo,
       time,
       createdAt,
+    } = logDetail;
+    const appInfo = await this.logTypeModel.findOne({ _id: appKey }).exec();
+    console.log(appInfo);
+    return {
+      _id,
+      systemInfo,
+      trace,
+      customInfo,
+      time,
+      createdAt,
+      type,
+      href,
+      message,
+      stack,
       appInfo: {
         createdAt: appInfo.createdAt,
         name: appInfo.name,
