@@ -29,14 +29,14 @@
           </el-table-column>
         </template>
         <template #time>
-          <el-table-column label="报错时间">
+          <el-table-column label="报错时间" width="200px">
             <template #default="{ row }">
               {{ formatDateClock(row.time) }}
             </template>
           </el-table-column>
         </template>
         <template #uploadTime>
-          <el-table-column label="上传时间">
+          <el-table-column label="上传时间" width="200px">
             <template #default="{ row }">
               {{ formatDateClock(row.createdAt) }}
             </template>
@@ -109,11 +109,13 @@ const headers = [
   },
 ]
 
-function getList(params: TableQuery): Promise<any> {
+function getList(params: TableQuery) {
   return new Promise((resolve) => {
     GetLogsList({
       ...params,
     }).then((res) => {
+      // eslint-disable-next-line no-console
+      console.log(res)
       resolve(res)
     })
   })

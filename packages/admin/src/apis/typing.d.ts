@@ -41,8 +41,7 @@ declare namespace API {
   }
 
   interface LogDetail {
-    name: string
-    message: string[]
+    message: string
     createdAt: number
     time: number
     systemInfo: {
@@ -52,6 +51,10 @@ declare namespace API {
       language: string
       baseVersion: string
       sdkVersion: string
+      connection: {
+        effectiveType: string
+        type: string
+      }
     }
     result: {
       source: string
@@ -60,6 +63,11 @@ declare namespace API {
       name: null | string
     }
     codes: LogDetailCode[]
+    stack?: string
+    type: 'network' | 'lag' | 'sourceLoad' | 'unhandledrejection' | 'unknow'
+    href: string
+    customInfo?: string
+    appInfo: TypeInfo
   }
 
   interface LogDetailParams {

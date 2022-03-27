@@ -2,36 +2,99 @@
   <container title="日志详情" @back="go2Back">
     <el-skeleton :rows="5" animated :loading="isLoading">
       <el-descriptions :border="true" :column="2" class="detail-info">
-        <el-descriptions-item label="错误名称">
-          {{ detail.name }}
+        <el-descriptions-item
+          label-class-name="detail-info__label"
+          label="应用名称"
+        >
+          {{ detail.appInfo.name }}
         </el-descriptions-item>
-        <el-descriptions-item label="错误消息">
-          {{ message }}
+        <el-descriptions-item
+          label-class-name="detail-info__label"
+          label="应用名称Key"
+        >
+          {{ detail.appInfo._id }}
         </el-descriptions-item>
-        <el-descriptions-item label="错误位置">
-          <span v-if="detail.result">
+        <el-descriptions-item
+          label-class-name="detail-info__label"
+          label="错误类型"
+        >
+          {{ errorType }}
+        </el-descriptions-item>
+        <el-descriptions-item
+          label-class-name="detail-info__label"
+          label="网络状态"
+        >
+          {{ detail.systemInfo.connection.effectiveType }}/
+          {{ detail.systemInfo.connection.type }}
+        </el-descriptions-item>
+        <el-descriptions-item
+          label-class-name="detail-info__label"
+          label="错误地址"
+        >
+          {{ detail.href }}
+        </el-descriptions-item>
+        <el-descriptions-item
+          v-if="detail.message"
+          label-class-name="detail-info__label"
+          label="错误消息"
+        >
+          {{ detail.message }}
+        </el-descriptions-item>
+        <el-descriptions-item
+          v-if="detail.stack"
+          label-class-name="detail-info__label"
+          label="错误消息"
+        >
+          {{ detail.stack }}
+        </el-descriptions-item>
+        <el-descriptions-item
+          v-if="detail.result"
+          label-class-name="detail-info__label"
+          label="错误位置"
+        >
+          <span>
             line：{{ detail.result.line }}，column：{{ detail.result.column }}
           </span>
-          <span v-else>无</span>
         </el-descriptions-item>
-        <el-descriptions-item label="错误文件">
+        <el-descriptions-item
+          label-class-name="detail-info__label"
+          label="错误文件"
+        >
           {{ detail.result ? detail.result.source : '无' }}
         </el-descriptions-item>
-        <el-descriptions-item label="浏览器类型">{{
-          detail.systemInfo.userAgent
-        }}</el-descriptions-item>
-        <el-descriptions-item label="系统">
+        <el-descriptions-item
+          label-class-name="detail-info__label"
+          label="浏览器类型"
+          >{{ detail.systemInfo.userAgent }}</el-descriptions-item
+        >
+        <el-descriptions-item
+          label-class-name="detail-info__label"
+          label="系统"
+        >
           {{ detail.systemInfo.platform }}
         </el-descriptions-item>
-        <el-descriptions-item label="语言">
+        <el-descriptions-item
+          label-class-name="detail-info__label"
+          label="语言"
+        >
           {{ detail.systemInfo.language }}
         </el-descriptions-item>
-        <el-descriptions-item label="创建时间">{{
-          formatDateClock(detail.time)
-        }}</el-descriptions-item>
-        <el-descriptions-item label="上传时间">{{
-          formatDateClock(detail.createdAt)
-        }}</el-descriptions-item>
+        <el-descriptions-item
+          label-class-name="detail-info__label"
+          label="额外信息"
+        >
+          {{ formatCustomInfo }}
+        </el-descriptions-item>
+        <el-descriptions-item
+          label-class-name="detail-info__label"
+          label="创建时间"
+          >{{ formatDateClock(detail.time) }}</el-descriptions-item
+        >
+        <el-descriptions-item
+          label-class-name="detail-info__label"
+          label="上传时间"
+          >{{ formatDateClock(detail.createdAt) }}</el-descriptions-item
+        >
       </el-descriptions>
       <div v-if="detail.codes && detail.codes.length" class="detail-code">
         <el-alert title="错误代码：" type="error" :closable="false" />
@@ -62,8 +125,7 @@ const router = useRouter()
 const detailId = ref('')
 const isLoading = ref(false)
 const detail = ref<API.LogDetail>({
-  name: '',
-  message: [],
+  message: '',
   createdAt: 0,
   time: 0,
   systemInfo: {
@@ -73,7 +135,12 @@ const detail = ref<API.LogDetail>({
     language: '',
     baseVersion: '',
     sdkVersion: '',
+    connection: {
+      effectiveType: '',
+      type: '',
+    },
   },
+  href: '',
   result: {
     source: '',
     line: 0,
@@ -81,9 +148,36 @@ const detail = ref<API.LogDetail>({
     name: '',
   },
   codes: [],
+  type: 'unknow',
+  customInfo: '',
+  appInfo: {
+    createdAt: 0,
+    name: '',
+    status: 0,
+    updatedAt: 0,
+    _id: '',
+  },
 })
-const message = computed(() => {
-  return detail.value.message.join('/')
+const errorType = computed(() => {
+  const map = {
+    network: '网络请求',
+    lag: '渲染卡顿',
+    sourceLoad: '资源加载错误',
+    unhandledrejection: 'promise',
+    unknow: '未知',
+  }
+  return map[detail.value.type]
+})
+const formatCustomInfo = computed(() => {
+  if (detail.value.customInfo) {
+    try {
+      return JSON.parse(detail.value.customInfo)
+    } catch (error) {
+      return '-'
+    }
+  } else {
+    return '-'
+  }
 })
 function getDetail() {
   isLoading.value = true
@@ -125,5 +219,8 @@ onMounted(() => {
       }
     }
   }
+}
+::v-deep .detail-info__label {
+  width: 120px;
 }
 </style>

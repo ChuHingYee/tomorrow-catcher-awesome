@@ -8,7 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@advanced-elements/table": "2.0.13",
+    "@advanced-elements/table": "2.0.18",
     "@element-plus/icons-vue": "^0.2.6",
     "@types/lodash.clonedeep": "^4.5.6",
     "@types/nprogress": "^0.2.0",
@@ -17,7 +17,7 @@
     "axios": "^0.25.0",
     "dayjs": "^1.10.7",
     "echarts": "^5.3.0",
-    "element-plus": "2.1.2",
+    "element-plus": "2.1.6",
     "lodash.clonedeep": "^4.5.0",
     "lodash.uniqueid": "^4.0.1",
     "nprogress": "^0.2.0",
