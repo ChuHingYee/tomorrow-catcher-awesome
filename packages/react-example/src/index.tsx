@@ -9,10 +9,11 @@ import {
 } from '@tomorrow-catcher/react';
 
 init({
-  key: '6230a0890a7301158ec5257b',
+  key: '6240417964dcee1bc227aeaf',
   expireDate: 0,
   reportUrl: 'http://127.0.0.1:7001/api/logs',
   trackDepth: 1,
+  handlersList: ['lag', 'sourceLoad', 'unhandledrejection'],
 });
 
 function errorComponent() {
